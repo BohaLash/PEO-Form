@@ -8,12 +8,7 @@ conn = sqlite3.connect('social_network.db')
 c = conn.cursor()
 
 
-@app.route("/")
-def main():
-    return render_template('index.html')
-
-
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/ru", methods=['GET', 'POST'])
 def login_page():
     login = request.form.get('login')
     password = request.form.get('password')
@@ -25,7 +20,7 @@ def login_page():
     else:
         message = "Enter login and password"
 
-    return render_template('login.html', message=message)
+    return render_template('form_ru.html', message=message)
 
 
 if __name__ == "__main__":
