@@ -4,21 +4,35 @@ import sqlite3
 
 app = Flask(__name__)
 
-conn = sqlite3.connect('social_network.db')
+global conn
+global c
+
+conn = sqlite3.connect('peo_form_answ.db')
 c = conn.cursor()
+
+c.execute(f"""
+    CREATE TABLE IF NOT EXISTS ru(
+        name TEXT,
+        car TEXT
+    )
+""")
+conn.commit()
 
 
 @app.route("/ru", methods=['GET', 'POST'])
 def login_page():
-    login = request.form.get('login')
-    password = request.form.get('password')
 
-    print(login, password)
+    name = request.form.get('name')
+    car = request.form.get('cars')
 
-    if login and password:
-        message = "Wrong username or password"
+    print(name, car)
+
+    if name and car:
+        message = "Спасибо за Ваш ответ"
+        c.execute(f"INSERT INTO ru VALUES ('{name}', '{car}')")
+        conn.commit()
     else:
-        message = "Enter login and password"
+        message = "Заполните, пожайлуста, все поля"
 
     return render_template('form_ru.html', message=message)
 

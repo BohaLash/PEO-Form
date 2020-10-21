@@ -9,19 +9,25 @@
 
 <body>
     <form class="login" method="post">
-        <h1>Log In</h1>
+        <h1>Анкета</h1>
         {% if message %}
         <p>{{ message }}</p>
         {% endif %}
         <div>
-            <label for="login">login</label>
-            <input type="text" name="login">
+            <label for="name">Имя</label>
+            <input type="text" name="name">
         </div>
         <div>
-            <label for="password">password</label>
-            <input type="password" name="password">
+            <label for="cars">Машина</label>
+            <select name="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="fiat">Fiat</option>
+            <option value="audi">Audi</option>
+        </select>
         </div>
-        <input type="submit" value="Login">
+
+        <input type="submit" value="Login" id="sbmt">
     </form>
 
 </body>

@@ -1,10 +1,10 @@
-body {
+/* body {
     margin: 0;
     padding: 0;
-    /* background: #e67e22; */
-}
+} */
 
-form {
+
+/* form {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -12,9 +12,10 @@ form {
     padding: 10%;
     text-align: center;
     border: solid;
-}
+} */
 
-input {
+
+/* input {
     margin: 0;
     background: black;
     color: white;
@@ -27,7 +28,6 @@ div {
 }
 
 label {
-    /* font-family: Arial; */
     font-size: 0.7em;
 }
 
@@ -37,4 +37,4 @@ label {
     color: black;
     background: white;
     border: solid black;
-}
+} */
