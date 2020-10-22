@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
 # from flask_login import login_user, login_required, logout_user
+from markupsafe import escape
 import sqlite3
 import csv
 from datetime import date
@@ -305,6 +306,12 @@ answs = [
      'italienisch']  # 39
 ]
 
+path = {
+    'ru': 'form_ru.html',
+    'ua': 'form_ua.html',
+    'pl': 'form_pl.html',
+}
+
 
 def parse_to_cvs():
 
@@ -332,9 +339,8 @@ def parse_to_cvs():
                 writer.writerow(output)
 
 
-@ app.route("/ru", methods=['GET', 'POST'])
-def login_page():
-
+@ app.route("/<language>", methods=['GET', 'POST'])
+def login_page(language):
     data = []
     for i in range(0, 40):
         if i in l:
@@ -359,7 +365,7 @@ def login_page():
         message = "Заполните, пожайлуста, все поля"
 
     today = date.today()
-    return render_template('form_ru.html', message=message, date=today.strftime("%Y-%m-%d"))
+    return render_template(path[language], message=message, date=today.strftime("%Y-%m-%d"))
 
 
 if __name__ == "__main__":
