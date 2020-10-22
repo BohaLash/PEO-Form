@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <title>Ua</title>
+</head>
+
+<body>
+    <form class="login" method="post">
+        <h1>Анкета</h1>
+        {% if message %}
+        <h2>{{ message }}</h2>
+        {% endif %}
+        <div>
+            <label for="0">Ваша країна</label>
+            <p><select name="0">
+                <option value="0"> Україна</option>
+                <option value="1"> Білорусь</option>
+                <option value="2"> Росія</option>
+                <option value="3"> Молдова</option>
+                <option value="4"> Польща</option>
+                <option value="5"> Литва</option>
+                <option value="6"> Латвія</option>
+                <option value="7"> Естонія</option>
+                <option value="8"> Грузія</option>
+                <option value="9"> Арменія</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="1">Номер телефону</label>
+            <p><input type="text" name="1" placeholder="012 123 45 67" required /></p>
+        </div>
+        <div>
+            <label for="2">Стать</label>
+            <p><select name="2">
+                <option value="0"> ч</option>
+                <option value="1"> ж</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="3">Прізвище</label>
+            <p><input type="text" name="3" required /></p>
+        </div>
+        <div>
+            <label for="4">Ім'я</label>
+            <p><input type="text" name="4" required /></p>
+        </div>
+        <div>
+            <label for="5">Водійські права</label>
+            <p><select name="5">
+                <option value="0"> немає</option>
+                <option value="1"> є</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="6">Освіта Медсестра</label>
+            <p><select name="6">
+                <option value="0"> немає</option>
+                <option value="1"> є</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="7">Готова працювати з дати</label>
+            <p><input type="date" name="7" min="{{ date }}" value="{{ date }}"></p>
+        </div>
+        <div>
+            <label for="8">Кількість днів, які Вам потрібно на збори до виїзду на вакансію</label>
+            <p><input type="number" name="8" min="1" max="30" value="1"></p>
+        </div>
+        <div>
+            <label for="9">Бажана заробітна плата</label>
+            <p><input type="number" name="9" min="0" max="1500" value="0"></p>
+        </div>
+        <div>
+            <label for="10">національність</label>
+            <p><select name="10">
+                <option value="0"> Украина</option>
+                <option value="1"> Беларусь</option>
+                <option value="2"> Россия</option>
+                <option value="3"> Молдавия</option>
+                <option value="4"> Грузия</option>
+                <option value="5"> Армения</option>
+                <option value="6"> ЕС</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="11">Сімейний стан</label>
+            <p><select name="11">
+                <option value="0"> не одружений</option>
+                <option value="1"> одружений</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="12">Чи є діти молодше 3х років</label>
+            <p><select name="12">
+                <option value="0"> немає</option>
+                <option value="1"> є</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="13">Чи є діти молодше 18ти років</label>
+            <p><select name="13">
+                <option value="0"> немає</option>
+                <option value="1"> є</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="14">вага в кг</label>
+            <p><input type="number" name="14" min="1" max="250" value="1"></p>
+        </div>
+        <div>
+            <label for="15">зріст в см</label>
+            <p><input type="number" name="15" min="1" max="250" value="1"></p>
+        </div>
+        <div>
+            <label for="16">Алергії</label>
+            <p><input type="checkbox" name="16 0" value="0" /> немає</p>
+            <p><input type="checkbox" name="16 1" value="1" /> коти</p>
+            <p><input type="checkbox" name="16 2" value="2" /> собаки</p>
+            <p><input type="checkbox" name="16 3" value="3" /> латекс</p>
+            <p><input type="checkbox" name="16 4" value="4" /> Хімічні засоби для чищення (пральний порошок, рідини для миття посуду і ін.)</p>
+            <p><input type="checkbox" name="16 5" value="5" /> Інше</p>
+        </div>
+        <div>
+            <label for="17">Алергії інші</label>
+            <p><input type="text" name="17" /></p>
+        </div>
+        <div>
+            <label for="18">Приймаете медикаменти регулярно</label>
+            <p><select name="18">
+                <option value="0"> ні</option>
+                <option value="1"> так</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="19">Якщо так, то які?</label>
+            <p><input type="text" name="19" /></p>
+        </div>
+        <div>
+            <label for="20">Чи п'єте алкоголь регулярно</label>
+            <p><select name="20">
+                <option value="0"> ні</option>
+                <option value="1"> так</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="21">Палите</label>
+            <p><select name="21">
+                <option value="0"> ні</option>
+                <option value="1"> так</option>
+            </select></p>
+        </div>
+
+        <h2>розкажіть про себе</h2>
+
+        <div>
+            <label for="22">опишіть свої найкращі риси характеру </label>
+            <p><input type="checkbox" name="22 0" value="0" /> надійний</p>
+            <p><input type="checkbox" name="22 1" value="1" /> терплячий</p>
+            <p><input type="checkbox" name="22 2" value="2" /> товариський</p>
+            <p><input type="checkbox" name="22 3" value="3" /> мотивований</p>
+            <p><input type="checkbox" name="22 4" value="4" /> урівноважений</p>
+            <p><input type="checkbox" name="22 5" value="5" /> енергійний</p>
+            <p><input type="checkbox" name="22 6" value="6" /> досвідчений</p>
+            <p><input type="checkbox" name="22 7" value="7" /> спокійний</p>
+            <p><input type="checkbox" name="22 8" value="8" /> організований</p>
+            <p><input type="checkbox" name="22 9" value="9" /> щирий</p>
+            <p><input type="checkbox" name="22 10" value="10" /> честолюбний</p>
+            <p><input type="checkbox" name="22 11" value="11" /> самодісциплінований</p>
+            <p><input type="checkbox" name="22 12" value="12" /> стресостійкий</p>
+            <p><input type="checkbox" name="22 13" value="13" /> уважний</p>
+            <p><input type="checkbox" name="22 14" value="14" /> акуратний</p>
+            <p><input type="checkbox" name="22 15" value="15" /> працьовитий</p>
+            <p><input type="checkbox" name="22 16" value="16" /> добрий</p>
+            <p><input type="checkbox" name="22 17" value="17" /> швидко навчаюсь новому</p>
+            <p><input type="checkbox" name="22 18" value="18" /> не маю шкідливих звичок</p>
+            <p><input type="checkbox" name="22 19" value="19" /> доброзичливий</p>
+            <p><input type="checkbox" name="22 20" value="20" /> сумлінну</p>
+            <p><input type="checkbox" name="22 21" value="21" /> оптимістичний</p>
+            <p><input type="checkbox" name="22 22" value="22" /> чуйний</p>
+            <p><input type="checkbox" name="22 23" value="23" /> вмію знаходити підхід до людей</p>
+            <p><input type="checkbox" name="22 24" value="24" /> наполегливий</p>
+            <p><input type="checkbox" name="22 25" value="25" /> творчий</p>
+            <p><input type="checkbox" name="22 26" value="26" /> різнобічний</p>
+            <p><input type="checkbox" name="22 27" value="27" /> урівноважений</p>
+            <p><input type="checkbox" name="22 28" value="28" /> з почуттям гумору</p>
+            <p><input type="checkbox" name="22 29" value="29" /> совісний</p>
+            <p><input type="checkbox" name="22 30" value="30" /> самодісциплінований</p>
+            <p><input type="checkbox" name="22 31" value="31" /> неупереджений</p>
+            <p><input type="checkbox" name="22 32" value="32" /> охайний</p>
+        </div>
+        <div>
+            <label for="23">Як ви проводите своє дозвілля</label>
+            <p><input type="checkbox" name="23 0" value="0" /> займатися спортом</p>
+            <p><input type="checkbox" name="23 1" value="1" /> читання книг і журналів</p>
+            <p><input type="checkbox" name="23 2" value="2" /> читання газет</p>
+            <p><input type="checkbox" name="23 3" value="3" /> настільні ігри</p>
+            <p><input type="checkbox" name="23 4" value="4" /> Лудо (Людо)</p>
+            <p><input type="checkbox" name="23 5" value="5" /> шахи</p>
+            <p><input type="checkbox" name="23 6" value="6" /> шашки</p>
+            <p><input type="checkbox" name="23 7" value="7" /> карти</p>
+            <p><input type="checkbox" name="23 8" value="8" /> дивитися телевізор</p>
+            <p><input type="checkbox" name="23 9" value="9" /> прогулянки на природі</p>
+            <p><input type="checkbox" name="23 10" value="10" /> гуляти із собакою</p>
+            <p><input type="checkbox" name="23 11" value="11" /> розгадувати кросводи</p>
+            <p><input type="checkbox" name="23 12" value="12" /> займатися в'язанням</p>
+            <p><input type="checkbox" name="23 13" value="13" /> вчити німецьку</p>
+            <p><input type="checkbox" name="23 14" value="14" /> співати у хорі</p>
+            <p><input type="checkbox" name="23 15" value="15" /> співати караоке</p>
+            <p><input type="checkbox" name="23 16" value="16" /> малювати</p>
+            <p><input type="checkbox" name="23 17" value="17" /> займатися різьбленням по дереву</p>
+            <p><input type="checkbox" name="23 18" value="18" /> займатися ремеслом вдома</p>
+            <p><input type="checkbox" name="23 19" value="19" /> ходити до церкви</p>
+            <p><input type="checkbox" name="23 20" value="20" /> готуввати </p>
+            <p><input type="checkbox" name="23 21" value="21" /> пекти</p>
+            <p><input type="checkbox" name="23 22" value="22" /> складати вірші, слухати поезію</p>
+            <p><input type="checkbox" name="23 23" value="23" /> складати паперовий орігамі</p>
+            <p><input type="checkbox" name="23 24" value="24" /> доглядати за моїм садом</p>
+            <p><input type="checkbox" name="23 25" value="25" /> грати з моїми домашніми тваринами</p>
+            <p><input type="checkbox" name="23 26" value="26" /> проводити час з моєю родиною</p>
+            <p><input type="checkbox" name="23 27" value="27" /> подорожувати</p>
+            <p><input type="checkbox" name="23 28" value="28" /> робити і обробляти фотографії</p>
+        </div>
+        <div>
+            <label for="24">Що вас підштовхнуло на роботу опікуном</label>
+            <p><select name="24">
+                <option value="0">?</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="25">Мої кулінарні здібності</label>
+            <p><select name="25">
+                <option value="0"> на жаль я не готую</option>
+                <option value="1"> завжди готую для себе і своєї сім'ї</option>
+                <option value="2"> люблю готувати і пробую регулярно нові рецепти</option>
+                <option value="3"> готувати і пекти це моя пристрасть</option>
+            </select></p>
+        </div>
+
+        <h2>ДОСВІД</h2>
+        <h2>Розкажіть про останніх пацієнтів </h2>
+
+        <div>
+            <label for="26">Країна</label>
+            <p><select name="26">
+                <option value="0"> Німеччина</option>
+                <option value="1"> Польща</option>
+                <option value="2"> Італія</option>
+                <option value="3"> Ізраїль</option>
+                <option value="4"> Україна</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="27">від</label>
+            <p><input type="date" name="27" max="{{ date }}" value="{{ date }}"></p>
+        </div>
+        <div>
+            <label for="28">до </label>
+            <p><input type="date" name="28" max="{{ date }}" value="{{ date }}"></p>
+        </div>
+        <div>
+            <label for="29">стать пацієнта</label>
+            <p><select name="29">
+                <option value="0"> ч</option>
+                <option value="1"> ж</option>
+                <option value="2"> сімейна пара</option>
+            </select></p>
+        </div>
+
+        <div>
+            <label for="30">ваші обов'язки</label>
+            <p><input type="checkbox" name="30 0" value="0" /> перевертати пацієнта в ліжку</p>
+            <p><input type="checkbox" name="30 1" value="1" /> трансфер з ліжка в інвалідний візок</p>
+            <p><input type="checkbox" name="30 2" value="2" /> допомога при підйомі по сходах</p>
+            <p><input type="checkbox" name="30 3" value="3" /> допомога в переодяганні</p>
+            <p><input type="checkbox" name="30 4" value="4" /> мити пацієнта в ліжку</p>
+            <p><input type="checkbox" name="30 5" value="5" /> мити торс пацієнта</p>
+            <p><input type="checkbox" name="30 6" value="6" /> мити ноги та інтимні місця пацієнта</p>
+            <p><input type="checkbox" name="30 7" value="7" /> доглядати за ротовою порожниною</p>
+            <p><input type="checkbox" name="30 8" value="8" /> допомагати в догляді за стопами та руками</p>
+            <p><input type="checkbox" name="30 9" value="9" /> допомагати доглядати волосся</p>
+            <p><input type="checkbox" name="30 10" value="10" /> допомагати ходити до туалету</p>
+            <p><input type="checkbox" name="30 11" value="11" /> змінювати підгузники</p>
+            <p><input type="checkbox" name="30 12" value="12" /> спорожняти мішечок сечового катетера</p>
+            <p><input type="checkbox" name="30 13" value="13" /> спорожняти мішечок стоми</p>
+            <p><input type="checkbox" name="30 14" value="14" /> допомагати реактивировать кон'юнктивні здібності</p>
+            <p><input type="checkbox" name="30 15" value="15" /> годувати пацієнта</p>
+            <p><input type="checkbox" name="30 16" value="16" /> подрібнювати їжу</p>
+            <p><input type="checkbox" name="30 17" value="17" /> стежити за прийняттям рідини</p>
+            <p><input type="checkbox" name="30 18" value="18" /> готувати, враховуючи спеціальну дієту пацієнта</p>
+            <p><input type="checkbox" name="30 19" value="19" /> домашнє господарство</p>
+            <p><input type="checkbox" name="30 20" value="20" /> робити закупи їжі</p>
+            <p><input type="checkbox" name="30 21" value="21" /> готувати їжу</p>
+            <p><input type="checkbox" name="30 22" value="22" /> догляд за квітами</p>
+            <p><input type="checkbox" name="30 23" value="23" /> догляд за садом</p>
+            <p><input type="checkbox" name="30 24" value="24" /> догляд за домашніми тваринами пацієнта</p>
+            <p><input type="checkbox" name="30 25" value="25" /> спільні прогулянки з пацієнтом</p>
+            <p><input type="checkbox" name="30 26" value="26" /> організаця дозвілля</p>
+            <p><input type="checkbox" name="30 27" value="27" /> супровід до лікаря</p>
+            <p><input type="checkbox" name="30 28" value="28" /> контоль прийому ліків </p>
+            <p><input type="checkbox" name="30 29" value="29" /> нічне чергування (не часто)</p>
+            <p><input type="checkbox" name="30 30" value="30" /> регулярне нічне чергування</p>
+        </div>
+        <div>
+            <label for="31">були допоміжні інструменти</label>
+            <p><input type="checkbox" name="31 0" value="0" /> немає</p>
+            <p><input type="checkbox" name="31 1" value="1" /> ходунки</p>
+            <p><input type="checkbox" name="31 2" value="2" /> інвалідний візок</p>
+            <p><input type="checkbox" name="31 3" value="3" /> електричний інвалідний візок</p>
+            <p><input type="checkbox" name="31 4" value="4" /> медичне ліжко</p>
+            <p><input type="checkbox" name="31 5" value="5" /> медичний підйомник</p>
+            <p><input type="checkbox" name="31 6" value="6" /> матрац для пролежнів</p>
+            <p><input type="checkbox" name="31 7" value="7" /> лифт</p>
+            <p><input type="checkbox" name="31 8" value="8" /> стілець для душу</p>
+            <p><input type="checkbox" name="31 9" value="9" /> уринова пляшка</p>
+            <p><input type="checkbox" name="31 10" value="10" /> підгузники</p>
+            <p><input type="checkbox" name="31 11" value="11" /> багаторазова пелюшка</p>
+            <p><input type="checkbox" name="31 12" value="12" /> WC Стілець</p>
+        </div>
+        <div>
+            <label for="32">ситуація та хвороби з якими я маю досвід або готова працювати</label>
+            <p><input type="checkbox" name="32 0" value="0" /> 2 пацієнти одразу</p>
+            <p><input type="checkbox" name="32 1" value="1" /> алергії</p>
+            <p><input type="checkbox" name="32 2" value="2" /> альцгеймер</p>
+            <p><input type="checkbox" name="32 3" value="3" /> астма</p>
+            <p><input type="checkbox" name="32 4" value="4" /> гіпертонія</p>
+            <p><input type="checkbox" name="32 5" value="5" /> депрсія</p>
+            <p><input type="checkbox" name="32 6" value="6" /> діабет</p>
+            <p><input type="checkbox" name="32 7" value="7" /> діабет (потрібен інсулін)</p>
+            <p><input type="checkbox" name="32 8" value="8" /> інсульт</p>
+            <p><input type="checkbox" name="32 9" value="9" /> штучне дихання/кисневе постачання</p>
+            <p><input type="checkbox" name="32 10" value="10" /> харчування через трубку (PEG)</p>
+            <p><input type="checkbox" name="32 11" value="11" /> катетер</p>
+            <p><input type="checkbox" name="32 12" value="12" /> постійний калоприйомник</p>
+            <p><input type="checkbox" name="32 13" value="13" /> допомога в пересуванні </p>
+            <p><input type="checkbox" name="32 14" value="14" /> трансфер пацієнта з ліжка в інвалідний візок</p>
+            <p><input type="checkbox" name="32 15" value="15" /> лежачі пацієнти</p>
+            <p><input type="checkbox" name="32 16" value="16" /> порушення ритму сна</p>
+            <p><input type="checkbox" name="32 17" value="17" /> початкова деменція</p>
+            <p><input type="checkbox" name="32 18" value="18" /> нетримання калу</p>
+            <p><input type="checkbox" name="32 19" value="19" /> нетримання сечі</p>
+            <p><input type="checkbox" name="32 20" value="20" /> пухлина / рак</p>
+            <p><input type="checkbox" name="32 21" value="21" /> остеопороз</p>
+            <p><input type="checkbox" name="32 22" value="22" /> паркинсон</p>
+            <p><input type="checkbox" name="32 23" value="23" /> після інфаркту</p>
+            <p><input type="checkbox" name="32 24" value="24" /> пролежні</p>
+            <p><input type="checkbox" name="32 25" value="25" /> розсіяний склероз</p>
+            <p><input type="checkbox" name="32 26" value="26" /> ревматизм</p>
+            <p><input type="checkbox" name="32 27" value="27" /> серцева аритмія</p>
+            <p><input type="checkbox" name="32 28" value="28" /> серцева недостатність</p>
+            <p><input type="checkbox" name="32 29" value="29" /> початкова деменція</p>
+            <p><input type="checkbox" name="32 30" value="30" /> середня деменція</p>
+            <p><input type="checkbox" name="32 31" value="31" /> сильна деменція </p>
+            <p><input type="checkbox" name="32 32" value="32" /> слабкість/обмежена мобільність</p>
+            <p><input type="checkbox" name="32 33" value="33" /> немає досвіду</p>
+        </div>
+        <div>
+            <label for="33">додаткова кваліфікація</label>
+            <p><input type="checkbox" name="33 0" value="0" /> курси першої медичної допомоги</p>
+            <p><input type="checkbox" name="33 1" value="1" /> курси масажу</p>
+            <p><input type="checkbox" name="33 2" value="2" /> курси кулінарії</p>
+            <p><input type="checkbox" name="33 3" value="3" /> курси дієтології</p>
+            <p><input type="checkbox" name="33 4" value="4" /> курси опікун для людей похилого віку</p>
+            <p><input type="checkbox" name="33 5" value="5" /> інше</p>
+            <p><input type="checkbox" name="33 6" value="6" /> не проходив</p>
+        </div>
+        <div>
+            <label for="34">Ви вивчали німецьку мову</label>
+            <p><select name="34">
+                <option value="0"> ні</option>
+                <option value="1"> так</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="35">де вивчав німецьку мову</label>
+            <p><select name="35">
+                <option value="0"> в школі</option>
+                <option value="1"> курси німецької мови</option>
+                <option value="2"> курси німецької мови від фірми Medius Work</option>
+                <option value="3"> на роботі опікуном в Німеччині</option>
+                <option value="4"> сам</option>
+                <option value="5"> не вивчав</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="36">якщо вивчали, як довго</label>
+            <p><select name="36">
+                <option value="0"> меньше 3 місяців</option>
+                <option value="1"> більше трьох місяців</option>
+                <option value="2"> більше 6 місяців</option>
+                <option value="3"> більше року</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="37">як ви себе оцінюєте</label>
+            <p><select name="37">
+                <option value="0"> вільне володіння</option>
+                <option value="1"> просунутий</option>
+                <option value="2"> комунікативний</option>
+                <option value="3"> базовий</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="38">у мене є сертифікат</label>
+            <p><select name="38">
+                <option value="0">Göthe C1</option>
+                <option value="1">Göthe B2</option>
+                <option value="2">Göthe B1</option>
+                <option value="3">Göthe A2</option>
+                <option value="4">Göthe A1</option>
+            </select></p>
+        </div>
+        <div>
+            <label for="39">додаткові мови</label>
+            <p><input type="checkbox" name="39 0" value="0" /> польська</p>
+            <p><input type="checkbox" name="39 1" value="1" /> англійска</p>
+            <p><input type="checkbox" name="39 2" value="2" /> італійска</p>
+        </div>
+        <input type="submit" id="sbmt">
+    </form>
+
+</body>
+
+</html>
