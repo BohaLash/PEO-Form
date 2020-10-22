@@ -314,35 +314,37 @@ path = {
 
 
 def parse_to_cvs(path):
-
     with open(path, "w", newline="") as file:
         writer = csv.writer(file)
         with sqlite3.connect("peo_form_answ.db") as con:
             cur = con.cursor()
+            # for each row in db fetch data to the output list
             for row in cur.execute("SELECT * FROM answ"):
                 output = []
                 for i in range(0, 40):
-                    # print(i, row[i])
+                    # if question has options
                     if answs[i]:
+                        # if question has checkboxes
                         if i in l:
                             output.append('')
                             if row[i]:
                                 for j in row[i][0:-1].split(' '):
-                                    # print('j', int(j))
                                     output[i] += answs[i][int(j)] + ';    '
                         else:
                             output.append('')
                             output[i] = answs[i][int(row[i])]
                     else:
                         output.append(row[i])
-                print(output)
+                # put list of fetched data in csv table
                 writer.writerow(output)
 
 
 @ app.route("/<language>", methods=['GET', 'POST'])
 def login_page(language):
+    # get data from form
     data = []
     for i in range(0, 40):
+        # if question has options
         if i in l:
             data.append('')
             for j in range(0, l[i]):
@@ -352,7 +354,7 @@ def login_page(language):
         else:
             data.append(request.form.get(str(i)))
 
-    print(data)
+    # put data to the db if avalible
     if data[1] != None and data[3] != None and data[4] != None:
         with sqlite3.connect("peo_form_answ.db") as con:
             cur = con.cursor()
@@ -360,7 +362,6 @@ def login_page(language):
                 "INSERT INTO answ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", data)
             con.commit()
         message = "Спасибо за Ваши ответы!"
-        # parse_to_cvs()
     else:
         message = "Заполните, пожайлуста, все поля"
 
