@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
 # from flask_login import login_user, login_required, logout_user
-from markupsafe import escape
+from flask import send_file
 import sqlite3
 import csv
 from datetime import date
@@ -313,9 +313,9 @@ path = {
 }
 
 
-def parse_to_cvs():
+def parse_to_cvs(path):
 
-    with open("output.csv", "w", newline="") as file:
+    with open(path, "w", newline="") as file:
         writer = csv.writer(file)
         with sqlite3.connect("peo_form_answ.db") as con:
             cur = con.cursor()
@@ -366,6 +366,13 @@ def login_page(language):
 
     today = date.today()
     return render_template(path[language], message=message, date=today.strftime("%Y-%m-%d"))
+
+
+@app.route('/download')
+def downloadFile():
+    path = "output.csv"
+    parse_to_cvs(path)
+    return send_file(path, as_attachment=True)
 
 
 if __name__ == "__main__":
